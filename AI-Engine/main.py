@@ -1,7 +1,10 @@
-from llm.provider import get_chat_model
+from graph.graph import graph
 
-llm = get_chat_model()
+result = graph.invoke(
+    {
+        user_input: "What is the capital of France?"
+    }
+)
 
-response = llm.invoke("Hello, how are you?")
 
-print(response.content)
+print(result)
