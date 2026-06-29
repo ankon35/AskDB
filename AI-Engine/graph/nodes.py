@@ -1,8 +1,18 @@
-from llm.providers import get_chat_model
+from llm.provider import get_chat_model
+
+from prompts.sql_generation import SQL_GENERATOR_PROMPT
 
 llm = get_chat_model()
 
-def chatbot(state):
-    response = llm.invoke(state['user_input'])
-    return {'response': response.content}
-    
+def generate_sql(state):
+    chain = SQL_GENERATOR_PROMPT | llm
+
+    response = chain.invoke(
+        {
+            "question": state["user_question"]
+        }
+    )
+
+    return {
+        "generated_sql": response.content
+    }

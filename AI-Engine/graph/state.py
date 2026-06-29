@@ -1,7 +1,12 @@
 from typing import TypedDict
 
 class AgentState(TypedDict):
-    user_input: str
-    response: str
+    user_question: str 
 
-    
+    generated_sql: str | None
+
+    final_answer: str | None
+
+    error: str | None
+        
+

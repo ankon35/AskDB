@@ -1,25 +1,25 @@
-from langgraph.graph import StartGraph
+from langgraph.graph import StateGraph
 from langgraph.graph import START, END
 
 from graph.state import AgentState
-from graph.nodes import chatbot
+from graph.nodes import generate_sql
 
 
-builder = StartGraph[AgentState]()
+builder = StateGraph(state_schema=AgentState)
 
 builder.add_node(
-    "chatbot",
-    chatbot
+    "generate_sql",
+    generate_sql
 )
 
 builder.add_edge(
     START,
-    "chatbot"
+    "generate_sql"
 )
 
 
 builder.add_edge(
-    "chatbot",
+    "generate_sql",
     END
 )
 
