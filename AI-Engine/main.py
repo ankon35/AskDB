@@ -1,12 +1,11 @@
-from graph.graph import graph
-
-result = graph.invoke(
-    {
-        "user_question":
-            "Show top five customers"
-    }
-
+from services.sql_agent_service import (
+    SQLAgentService
 )
 
+agent = SQLAgentService()
 
-print(result["generated_sql"])
+result = agent.run(
+    "Top five customers"
+)
+
+print(result)
