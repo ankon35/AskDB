@@ -1,16 +1,19 @@
 from typing import TypedDict, Optional, Any
 
 class AgentState(TypedDict):
+
     user_question: str
 
-    database_schema: Optional[str]
+    database_schema: str | None
 
-    generated_sql: Optional[str]
+    generated_sql: str | None
 
-    query_result: Optional[Any]
+    is_sql_valid: bool
 
-    final_answer: Optional[str]
+    query_result: object | None
 
-    error: Optional[str]
+    final_answer: str | None
+
+    error: str | None
 
     retry_count: int

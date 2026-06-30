@@ -1,4 +1,12 @@
 class SchemaTool:
 
-    def get_scema(self):
-        raise NotImplementedError()
+    def schema_tool(state):
+
+    schema = state[
+        "database_service"
+    ].get_schema()
+
+    return {
+
+        "database_schema": schema
+    }
